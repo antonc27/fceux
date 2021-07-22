@@ -244,6 +244,18 @@ int ConsoleViewSDL_t::init(void)
 		sdlWindow = SDL_CreateWindowFrom( (void*)windowHandle);
 	}
 
+	if (sdlWindow == NULL)
+	{
+		sdlWindow = SDL_CreateWindow(
+			"An SDL2 window",                  // window title
+			SDL_WINDOWPOS_UNDEFINED,           // initial x position
+			SDL_WINDOWPOS_UNDEFINED,           // initial y position
+			view_width,                               // width, in pixels
+			view_height,                               // height, in pixels
+			SDL_WINDOW_HIDDEN                  // flags - see below
+		);
+	}
+
 	if (sdlWindow == NULL) 
 	{
 		printf("[SDL] Failed to create window from handle.\n");
